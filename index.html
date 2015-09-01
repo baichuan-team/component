@@ -1,0 +1,218 @@
+<!DOCTYPE HTML>
+<html ng-app="app">
+<head>
+  <meta charset="utf-8">
+  
+  <title>baichuan</title>
+  <meta name="author" content="baichuan">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="baichuan"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="baichuan" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="/js/angular.min.js"></script>
+  <script src="/js/angular-route.min.js"></script>
+  <script src="/js/angular-sanitize.min.js"></script>
+  <script src="/js/angular-recursion.min.js"></script>
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+  <script src="/js/gallery.js"></script>
+
+  <script type="text/javascript">
+     var app = angular.module('app', [ 'ngRoute', 'ngSanitize', 'RecursionHelper']); 
+  </script>
+  
+
+  
+
+</head>
+
+
+<body ng-controller="main">
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">baichuan</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+      
+  
+    <h1 class="title"><a href="/2015/09/01/test/">angular-select-mutiple</a></h1>
+  
+
+        <time datetime="2015-09-01T07:30:28.000Z">2015-09-01</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h3 id="支持单选,_多选,_框选组件,_按住shift框选为取消选择">支持单选, 多选, 框选组件, 按住shift框选为取消选择</h3><p><script type="text/javascript" src="/js/angular-select-multiple.js"></script><br><style type="text/css">.selected {
+    background-color: green !important;
+}
+.selecting {
+    background-color: yellow !important;
+}</style></p>
+<div class="hexo-insert-code"><div class="info">
+    <span>已选元素个数: <span ng-bind="total"></span></span>
+    <div style="float:right">
+        <label class="checkbox-inline" ng-click="select($event)" style="width:80px;">
+            <input type="checkbox"><span ng-bind="selectAll"></span>
+        </label>
+    </div>
+</div>
+<table class="table" select-multiple-box selected-done="showMsg()" style="border:1px solid #ccc;" id="table">
+    <tr ng-repeat="list in [1,2,3,4,5,6,7,8,9,10]">
+            <td select-multiple-item ng-class="{'selecting': isSelecting ,'selected': isSelected}"  style="border-right:1px solid #ccc;">&nbsp;</td>
+            <td select-multiple-item ng-class="{'selecting': isSelecting ,'selected': isSelected}"  style="border-right:1px solid #ccc;">&nbsp;</td>
+            <td select-multiple-item ng-class="{'selecting': isSelecting ,'selected': isSelected}"  style="border-right:1px solid #ccc;">&nbsp;</td>
+            <td select-multiple-item ng-class="{'selecting': isSelecting ,'selected': isSelected}"  style="border-right:1px solid #ccc;">&nbsp;</td>
+            <td select-multiple-item ng-class="{'selecting': isSelecting ,'selected': isSelected}"  style="border-right:1px solid #ccc;">&nbsp;</td>
+            <td select-multiple-item ng-class="{'selecting': isSelecting ,'selected': isSelected}"  style="border-right:1px solid #ccc;">&nbsp;</td>
+            <td select-multiple-item ng-class="{'selecting': isSelecting ,'selected': isSelected}"  style="border-right:1px solid #ccc;">&nbsp;</td>
+            <td select-multiple-item ng-class="{'selecting': isSelecting ,'selected': isSelected}"  style="border-right:1px solid #ccc;">&nbsp;</td>
+            <td select-multiple-item ng-class="{'selecting': isSelecting ,'selected': isSelected}"  style="border-right:1px solid #ccc;">&nbsp;</td>
+            <td select-multiple-item ng-class="{'selecting': isSelecting ,'selected': isSelected}" >&nbsp;</td>
+    </tr>
+</table></div>
+<script>    angular.module('app', ['selectMultiple'])
+    .controller('main', function ($scope, $timeout) {
+        $scope.selectAll = '全选';
+        $scope.multipleSelect = '取消框选';
+        $scope.canMultiple = true;
+
+        $scope.showMsg = function () {
+            $timeout(function () {
+                var selected=document.querySelectorAll('.selected');
+                $scope.total = selected.length;
+            });
+        }
+        // 全选
+        $scope.select = function (e) {
+            var currentElement = e.srcElement || e.target;
+            if (currentElement.tagName.toLowerCase() === 'input') {
+                if (currentElement.checked) {
+                    $scope.selectAll = '取消全选';
+                }
+                else {
+                    $scope.selectAll = '全选';
+                }
+                var selected=document.querySelectorAll('.can-be-selected');
+                angular.forEach(selected, function (item) {
+                    angular.element(item).scope().isSelected = currentElement.checked;
+                });
+                $scope.showMsg();
+            }
+        }
+    });</script>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2015/09/01/test/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+      
+  
+    <h1 class="title"><a href="/2015/09/01/hello-world/">Hello World</a></h1>
+  
+
+        <time datetime="2015-09-01T03:50:36.000Z">2015-09-01</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+<nav id="pagination">
+  
+  
+  <div class="clearfix"></div>
+</nav></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜尋">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2015 baichuan
+  
+</div>
+<div class="clearfix"></div></footer>
+  
+</body>
+</html>
