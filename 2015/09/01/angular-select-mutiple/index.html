@@ -1,0 +1,241 @@
+<!DOCTYPE HTML>
+<html ng-app="app">
+<head>
+  <meta charset="utf-8">
+  
+  <title>angular-select-mutiple | baichuan</title>
+  <meta name="author" content="baichuan">
+  
+  <meta name="description" content="支持单选, 多选, 框选组件, 按住shift框选为取消选择.selected {
+    background-color: green !important;
+}
+.selecting {
+    background-color: yellow !important;
+}
+
+    已选元素个数: 
+    
+        
+            
+        
+    
+
+
+    
+            &amp;nbsp;
+            &amp;nbsp;
+            &amp;nbsp;
+            &amp;nbsp;
+            &amp;nbsp;
+            &amp;nbsp;
+            &amp;nbsp;
+            &amp;nbsp;
+            &amp;nbsp;
+            &amp;nbsp;
+    
+
+    angular.module(&#39;app&#39;, [&#39;selectMultiple&#39;])
+    .controller(&#39;main&#39;, function ($scope, $timeout) {
+        $scope.selectAll = &#39;全选&#39;;
+        $scope.multipleSelect = &#39;取消框选&#39;;
+        $scope.canMultiple = true;
+
+        $scope.showMsg = function () {
+            $timeout(function () {
+                var selected=document.querySelectorAll(&#39;.selected&#39;);
+                $scope.total = selected.length;
+            });
+        }
+        // 全选
+        $scope.select = function (e) {
+            var currentElement = e.srcElement || e.target;
+            if (currentElement.tagName.toLowerCase() === &#39;input&#39;) {
+                if (currentElement.checked) {
+                    $scope.selectAll = &#39;取消全选&#39;;
+                }
+                else {
+                    $scope.selectAll = &#39;全选&#39;;
+                }
+                var selected=document.querySelectorAll(&#39;.can-be-selected&#39;);
+                angular.forEach(selected, function (item) {
+                    angular.element(item).scope().isSelected = currentElement.checked;
+                });
+                $scope.showMsg();
+            }
+        }
+    });">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="angular-select-mutiple"/>
+  <meta property="og:site_name" content="baichuan"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/component/favicon.png" rel="icon">
+  <link rel="alternate" href="/component/atom.xml" title="baichuan" type="application/atom+xml">
+  <link rel="stylesheet" href="/component/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/component/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="/component/js/angular.min.js"></script>
+  <script src="/component/js/angular-route.min.js"></script>
+  <script src="/component/js/angular-sanitize.min.js"></script>
+  <script src="/component/js/angular-recursion.min.js"></script>
+  <script src="/component/js/jquery.min.js"></script>
+  <script src="/component/js/jquery.imagesloaded.min.js"></script>
+  <script src="/component/js/gallery.js"></script>
+
+  <script type="text/javascript">
+     var app = angular.module('app', [ 'ngRoute', 'ngSanitize', 'RecursionHelper']); 
+  </script>
+  
+
+  
+
+</head>
+
+
+<body ng-controller="main">
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/component/">baichuan</a></h1>
+  <h2><a href="/component/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+      
+  
+    <h1 class="title">angular-select-mutiple</h1>
+  
+
+        <time datetime="2015-09-01T07:30:28.000Z">2015-09-01</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h3 id="支持单选,_多选,_框选组件,_按住shift框选为取消选择">支持单选, 多选, 框选组件, 按住shift框选为取消选择</h3><p><script type="text/javascript" src="/component/js/angular-select-multiple.js"></script><br><style type="text/css">.selected {
+    background-color: green !important;
+}
+.selecting {
+    background-color: yellow !important;
+}</style></p>
+<div class="hexo-insert-code"><div class="info">
+    <span>已选元素个数: <span ng-bind="total"></span></span>
+    <div style="float:right">
+        <label class="checkbox-inline" ng-click="select($event)" style="width:80px;">
+            <input type="checkbox"><span ng-bind="selectAll"></span>
+        </label>
+    </div>
+</div>
+<table class="table" select-multiple-box="" selected-done="showMsg()" style="border:1px solid #ccc;" id="table">
+    <tr ng-repeat="list in [1,2,3,4,5,6,7,8,9,10]">
+            <td select-multiple-item="" ng-class="{'selecting': isSelecting ,'selected': isSelected}" style="border-right:1px solid #ccc;">&nbsp;</td>
+            <td select-multiple-item="" ng-class="{'selecting': isSelecting ,'selected': isSelected}" style="border-right:1px solid #ccc;">&nbsp;</td>
+            <td select-multiple-item="" ng-class="{'selecting': isSelecting ,'selected': isSelected}" style="border-right:1px solid #ccc;">&nbsp;</td>
+            <td select-multiple-item="" ng-class="{'selecting': isSelecting ,'selected': isSelected}" style="border-right:1px solid #ccc;">&nbsp;</td>
+            <td select-multiple-item="" ng-class="{'selecting': isSelecting ,'selected': isSelected}" style="border-right:1px solid #ccc;">&nbsp;</td>
+            <td select-multiple-item="" ng-class="{'selecting': isSelecting ,'selected': isSelected}" style="border-right:1px solid #ccc;">&nbsp;</td>
+            <td select-multiple-item="" ng-class="{'selecting': isSelecting ,'selected': isSelected}" style="border-right:1px solid #ccc;">&nbsp;</td>
+            <td select-multiple-item="" ng-class="{'selecting': isSelecting ,'selected': isSelected}" style="border-right:1px solid #ccc;">&nbsp;</td>
+            <td select-multiple-item="" ng-class="{'selecting': isSelecting ,'selected': isSelected}" style="border-right:1px solid #ccc;">&nbsp;</td>
+            <td select-multiple-item="" ng-class="{'selecting': isSelecting ,'selected': isSelected}">&nbsp;</td>
+    </tr>
+</table></div>
+<script>    angular.module('app', ['selectMultiple'])
+    .controller('main', function ($scope, $timeout) {
+        $scope.selectAll = '全选';
+        $scope.multipleSelect = '取消框选';
+        $scope.canMultiple = true;
+
+        $scope.showMsg = function () {
+            $timeout(function () {
+                var selected=document.querySelectorAll('.selected');
+                $scope.total = selected.length;
+            });
+        }
+        // 全选
+        $scope.select = function (e) {
+            var currentElement = e.srcElement || e.target;
+            if (currentElement.tagName.toLowerCase() === 'input') {
+                if (currentElement.checked) {
+                    $scope.selectAll = '取消全选';
+                }
+                else {
+                    $scope.selectAll = '全选';
+                }
+                var selected=document.querySelectorAll('.can-be-selected');
+                angular.forEach(selected, function (item) {
+                    angular.element(item).scope().isSelected = currentElement.checked;
+                });
+                $scope.showMsg();
+            }
+        }
+    });</script>
+<a id="more"></a>
+<h2 id="如何使用">如何使用</h2><h3 id="安装">安装</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ bower install angular-select-multiple --save</span><br></pre></td></tr></table></figure>
+<h3 id="引用">引用</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"bower_components/angular-select-multiple/angular-select-multiple.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="Html">Html</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">table</span> <span class="attribute">class</span>=<span class="value">"table"</span> <span class="attribute">select-multiple-box</span> <span class="attribute">selected-done</span>=<span class="value">"showMsg()"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">tr</span> <span class="attribute">ng-repeat</span>=<span class="value">"list in [1,2,3,4,5,6,7,8,9,10]"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">td</span> <span class="attribute">select-multiple-item</span> <span class="attribute">ng-class</span>=<span class="value">"&#123;'selecting': isSelecting ,'selected': isSelected&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="title">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">td</span> <span class="attribute">select-multiple-item</span> <span class="attribute">ng-class</span>=<span class="value">"&#123;'selecting': isSelecting ,'selected': isSelected&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="title">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">td</span> <span class="attribute">select-multiple-item</span> <span class="attribute">ng-class</span>=<span class="value">"&#123;'selecting': isSelecting ,'selected': isSelected&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="title">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">td</span> <span class="attribute">select-multiple-item</span> <span class="attribute">ng-class</span>=<span class="value">"&#123;'selecting': isSelecting ,'selected': isSelected&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="title">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">td</span> <span class="attribute">select-multiple-item</span> <span class="attribute">ng-class</span>=<span class="value">"&#123;'selecting': isSelecting ,'selected': isSelected&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="title">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">td</span> <span class="attribute">select-multiple-item</span> <span class="attribute">ng-class</span>=<span class="value">"&#123;'selecting': isSelecting ,'selected': isSelected&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="title">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">td</span> <span class="attribute">select-multiple-item</span> <span class="attribute">ng-class</span>=<span class="value">"&#123;'selecting': isSelecting ,'selected': isSelected&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="title">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">td</span> <span class="attribute">select-multiple-item</span> <span class="attribute">ng-class</span>=<span class="value">"&#123;'selecting': isSelecting ,'selected': isSelected&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="title">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">td</span> <span class="attribute">select-multiple-item</span> <span class="attribute">ng-class</span>=<span class="value">"&#123;'selecting': isSelecting ,'selected': isSelected&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="title">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">td</span> <span class="attribute">select-multiple-item</span> <span class="attribute">ng-class</span>=<span class="value">"&#123;'selecting': isSelecting ,'selected': isSelected&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="title">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>父元素增加属性<code>select-multiple-box</code>, 能被选中的子元素增加属性<code>select-multiple-item</code></p>
+<h3 id="Css">Css</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.selected</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">background-color</span>:<span class="value"> green <span class="important">!important</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.selecting</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">background-color</span>:<span class="value"> yellow <span class="important">!important</span></span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<p><code>.selected</code>为选中以后的样式, <code>.selecting</code>为框选时, 所选中的元素的样式, 均可自定义</p>
+<h3 id="Js">Js</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">angular.module(<span class="string">'app'</span>, [<span class="string">'selectMultiple'</span>]);</span><br></pre></td></tr></table></figure>
+<p>引入<code>selectMultiple</code>即可</p>
+<h3 id="Callback">Callback</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">table</span> <span class="attribute">class</span>=<span class="value">"table"</span> <span class="attribute">select-multiple-box</span> <span class="attribute">selected-done</span>=<span class="value">"showMsg()"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>如需在选中后, 添加回调方法, 加上<code>select-done=”func()”</code>即可.</p>
+<h3 id="取消框选">取消框选</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">table</span> <span class="attribute">class</span>=<span class="value">"table"</span> <span class="attribute">select-multiple-box</span> <span class="attribute">multiple-select</span>=<span class="value">"false"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>如果页面中处理dom的事件较多, 框选会存在一定的性能问题, 加上<code>smultiple-select=”false”</code>即可关闭框选功能(默认为开启)</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜尋">
+    <input type="hidden" name="q" value="site:baichuan-team.github.io/component">
+  </form>
+</div>
+
+  
+
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2015 baichuan
+  
+</div>
+<div class="clearfix"></div></footer>
+  
+</body>
+</html>

@@ -96,6 +96,97 @@
 
 
 
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+      
+  
+    <h1 class="title"><a href="/component/2015/09/01/angular-select-mutiple/">angular-select-mutiple</a></h1>
+  
+
+        <time datetime="2015-09-01T07:30:28.000Z">2015-09-01</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h3 id="支持单选,_多选,_框选组件,_按住shift框选为取消选择">支持单选, 多选, 框选组件, 按住shift框选为取消选择</h3><p><script type="text/javascript" src="/component/js/angular-select-multiple.js"></script><br><style type="text/css">.selected {
+    background-color: green !important;
+}
+.selecting {
+    background-color: yellow !important;
+}</style></p>
+<div class="hexo-insert-code"><div class="info">
+    <span>已选元素个数: <span ng-bind="total"></span></span>
+    <div style="float:right">
+        <label class="checkbox-inline" ng-click="select($event)" style="width:80px;">
+            <input type="checkbox"><span ng-bind="selectAll"></span>
+        </label>
+    </div>
+</div>
+<table class="table" select-multiple-box selected-done="showMsg()" style="border:1px solid #ccc;" id="table">
+    <tr ng-repeat="list in [1,2,3,4,5,6,7,8,9,10]">
+            <td select-multiple-item ng-class="{'selecting': isSelecting ,'selected': isSelected}"  style="border-right:1px solid #ccc;">&nbsp;</td>
+            <td select-multiple-item ng-class="{'selecting': isSelecting ,'selected': isSelected}"  style="border-right:1px solid #ccc;">&nbsp;</td>
+            <td select-multiple-item ng-class="{'selecting': isSelecting ,'selected': isSelected}"  style="border-right:1px solid #ccc;">&nbsp;</td>
+            <td select-multiple-item ng-class="{'selecting': isSelecting ,'selected': isSelected}"  style="border-right:1px solid #ccc;">&nbsp;</td>
+            <td select-multiple-item ng-class="{'selecting': isSelecting ,'selected': isSelected}"  style="border-right:1px solid #ccc;">&nbsp;</td>
+            <td select-multiple-item ng-class="{'selecting': isSelecting ,'selected': isSelected}"  style="border-right:1px solid #ccc;">&nbsp;</td>
+            <td select-multiple-item ng-class="{'selecting': isSelecting ,'selected': isSelected}"  style="border-right:1px solid #ccc;">&nbsp;</td>
+            <td select-multiple-item ng-class="{'selecting': isSelecting ,'selected': isSelected}"  style="border-right:1px solid #ccc;">&nbsp;</td>
+            <td select-multiple-item ng-class="{'selecting': isSelecting ,'selected': isSelected}"  style="border-right:1px solid #ccc;">&nbsp;</td>
+            <td select-multiple-item ng-class="{'selecting': isSelecting ,'selected': isSelected}" >&nbsp;</td>
+    </tr>
+</table></div>
+<script>    angular.module('app', ['selectMultiple'])
+    .controller('main', function ($scope, $timeout) {
+        $scope.selectAll = '全选';
+        $scope.multipleSelect = '取消框选';
+        $scope.canMultiple = true;
+
+        $scope.showMsg = function () {
+            $timeout(function () {
+                var selected=document.querySelectorAll('.selected');
+                $scope.total = selected.length;
+            });
+        }
+        // 全选
+        $scope.select = function (e) {
+            var currentElement = e.srcElement || e.target;
+            if (currentElement.tagName.toLowerCase() === 'input') {
+                if (currentElement.checked) {
+                    $scope.selectAll = '取消全选';
+                }
+                else {
+                    $scope.selectAll = '全选';
+                }
+                var selected=document.querySelectorAll('.can-be-selected');
+                angular.forEach(selected, function (item) {
+                    angular.element(item).scope().isSelected = currentElement.checked;
+                });
+                $scope.showMsg();
+            }
+        }
+    });</script>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/component/2015/09/01/angular-select-mutiple/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
 
 <nav id="pagination">
   
